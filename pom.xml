@@ -9,9 +9,6 @@
     <name>spring-mvc-demo</name>
     <description>Demo project for Spring Boot</description>
 
-    <propercties>
-        <java.version>1.8</java.version>
-    </propercties>
 
     <dependencies>
         <dependency>
