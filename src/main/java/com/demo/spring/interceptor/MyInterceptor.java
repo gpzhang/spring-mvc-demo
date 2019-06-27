@@ -1,4 +1,4 @@
-package com.demo.spring.intercpetor;
+package com.demo.spring.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author haishen
  * @date 2019/6/2
  */
-public class MyIntercpetor implements HandlerInterceptor {
+public class MyInterceptor implements HandlerInterceptor {
 
     /**
      * 请求执行方法之前执行
@@ -23,7 +23,7 @@ public class MyIntercpetor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("MyIntercpetor.preHandle()");
+        System.out.println("MyInterceptor.preHandle()");
         return true;
     }
 
@@ -39,7 +39,7 @@ public class MyIntercpetor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
-        System.out.println("MyIntercpetor.postHandle()");
+        System.out.println("MyInterceptor.postHandle()");
 
     }
 
@@ -55,7 +55,7 @@ public class MyIntercpetor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
-        System.out.println("MyIntercpetor.afterCompletion()");
+        System.out.println("MyInterceptor.afterCompletion()");
 
     }
 
