@@ -1,5 +1,6 @@
 package com.demo.spring.service;
 
+import com.demo.spring.vo.Article;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,7 +22,11 @@ public class ArticleServiceImpl {
         System.out.println("ArticleServiceImpl的类加载器:" + classLoader);
     }
 
-    public String listArticle() {
-        return "new article!!!";
+    public Article listArticle() {
+        Article article = new Article();
+        article.setId(12);
+        article.setTitle("new article!!!");
+        article.setLinkUrl("wwww");
+        return article;
     }
 }

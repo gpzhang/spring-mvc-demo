@@ -1,7 +1,10 @@
 package com.demo.spring.controller;
 
+import com.demo.spring.service.ArticleServiceImpl;
+import com.demo.spring.vo.Article;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author haishen
@@ -11,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class HelloController {
 
+    @Autowired
+    private ArticleServiceImpl articleService;
+
     /**
      * spring mvc 通过tomcat部署时,bean的加载初始化是通过线程
-     * ？？？(未知)
+     * startStopExecutor线程
      * 来完成的
      */
     public HelloController() {
@@ -53,8 +59,9 @@ public class HelloController {
      *
      * @return
      */
-    @RequestMapping("/index")
-    public String index() {
+    @RequestMapping(value = "/index/{source}", method = RequestMethod.GET)
+    public String index(@PathVariable("source") Integer source, @RequestParam Integer id) {
+        System.out.println("request pram, source:[" + source + "],id:[" + id + "]");
         System.out.println("access index api,thread:[" + Thread.currentThread().getName() + "],object:[" + this + "]");
         try {
             Thread.sleep(1000 * 3L);
@@ -62,6 +69,15 @@ public class HelloController {
             e.printStackTrace();
         }
         return "index";
+    }
+
+
+    @RequestMapping(value = "/article", method = RequestMethod.GET)
+    @ResponseBody
+    public Article getArticle(Integer id) {
+        System.out.println("request pram,id:[" + id + "]");
+        System.out.println("get article,");
+        return articleService.listArticle();
     }
 
 }
