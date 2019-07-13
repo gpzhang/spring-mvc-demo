@@ -25,7 +25,7 @@ public class ArticleServiceImpl {
     public Article listArticle() {
         Article article = new Article();
         article.setId(12);
-        article.setTitle("new article!!!");
+        article.setTitle("新闻标题");
         article.setLinkUrl("wwww");
         return article;
     }
